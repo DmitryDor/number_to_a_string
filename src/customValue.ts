@@ -23,6 +23,7 @@ export let valuesFrom10To19 = {
     18: "восемнадцать",
     19: "девятнадцать"
 }
+
 export let dozens = {
     20: "двадцать",
     30: "тридцать",
@@ -58,6 +59,7 @@ export const unitProcessing = (value: string) => {
         return ''
     }
 }
+
 export const dozensProcessing = (value: string) => {
     if (valuesFrom10To19.hasOwnProperty(value)) {
         // @ts-ignore
@@ -78,6 +80,7 @@ export const dozensProcessing = (value: string) => {
     }
 
 }
+
 export const hundredsProcessing = (value: string) => {
     if (hundreds.hasOwnProperty(value)) {
         if (value[1] === '0' && value[1] === '0') {
@@ -133,6 +136,7 @@ export const thousandsProcessing = (value: string) => {
         return valuesUpTo9[value[0]] + ' ' + bigNumbersNames1[0] + ' ' + unitProcessing(value[3])
     }
 }
+
 export const tensOfThousandsProcessing = (value: string) => {
 
     if (value.length === 5 && value[0] !== '1' && value[1] === '0' && value[2] === '0' && value[4] === '0') {
@@ -149,6 +153,7 @@ export const tensOfThousandsProcessing = (value: string) => {
         return dozens[value[0] + '0'] + ' ' + unitProcessing(value[1]) + ' ' + bigNumbersNames1[0] + ' ' + halperFunction(value.split('').slice(2).join(''))
     }
 }
+
 export const hundredsOfThousandsProcessing = (value: string) => {
     if (value.length === 6 && value[1] === '0' && value[2] === '0') {
         // @ts-ignore
@@ -180,6 +185,7 @@ export const millionsProcessing = (value: string) => {
         return valuesUpTo9[value[0]] + ' ' + bigNumbersNames1[1] + ' ' + halperFunction(value.split('').slice(1).join(''))
     }
 }
+
 export const tensOfmillionsProcessing = (value: string) => {
     if (value.length === 8 && valuesFrom10To19.hasOwnProperty(value[0] + value[1])) {
         // @ts-ignore
@@ -194,6 +200,7 @@ export const tensOfmillionsProcessing = (value: string) => {
         return dozens[value[0] + '0'] + ' ' + valuesUpTo9[value[1]] + ' ' + bigNumbersNames1[1] + ' ' + halperFunction(value.split('').slice(2).join(''))
     }
 }
+
 export const hundredsOfmillionsProcessing = (value: string) => {
     if (value.length === 9 && value[1] === '0' && value[2] === '0') {
         // @ts-ignore
@@ -357,9 +364,6 @@ export const hundredsOfquadrillionProcessing = (value: string) => {
         return hundreds[value[0] + '0' + '0'] + ' ' + dozens[value[1] + '0'] + ' ' + valuesUpTo9[value[2]] + ' ' + bigNumbersNames1[4] + ' ' + halperFunction(value.split('').slice(3).join(''))
     }
 }
-
-
-
 
 
 function halperFunction(value: string): any {

@@ -123,11 +123,22 @@ export function ComponentForProcessingNumericValues() {
             setFigureInWords(hundredsOfquadrillionProcessing(typeValue))
             setError(null)
         }
-        if (typeValue.length > 18){
-            setError('Please enter a number with a maximum of 18 characters (quadrillion)')
+        if (typeValue.length > 18) {
+            setError('Пожалуйста, введите число, содержащее не более 18 символов (квадриллион).')
         }
-
-        // setError(null)
+        if (typeValue.includes('-')) {
+            setError('Пожалуйста, введите целое, натуральное, положительное число.')
+        }
+        if (typeValue.includes('.')) {
+            setError('Пожалуйста, введите целое, натуральное, положительное число.')
+        }
+        if (typeValue.includes(',')) {
+            setError('Пожалуйста, введите целое, натуральное, положительное число.')
+        }
+        // @ts-ignore
+        if (!Number(typeValue)) {
+            setError('Пожалуйста, введите целое, натуральное, положительное число.')
+        }
     }
     const onKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === "Enter") {
@@ -144,7 +155,7 @@ export function ComponentForProcessingNumericValues() {
                        onKeyPress={onKeyPressHandler}
                 />
                 <button onClick={onClickHandler} className="buttonType">Enter</button>
-                <span className="resultType">{figureInWords}</span>
+                {!error && <span className="resultType">{figureInWords}</span>}
             </header>
         </div>
     )
