@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './App.css';
+import './ComponentForProcessingNumericValues.css';
 import {
     billionProcessing,
     dozensProcessing,
@@ -24,8 +24,8 @@ import {
 export function ComponentForProcessingNumericValues() {
 
     let [typeValue, setTypeValue] = useState('')
-    let [error, setError] = useState(null)
-    let [figureInWords, setFigureInWords] = useState('zero')
+    let [error, setError] = useState("")
+    let [figureInWords, setFigureInWords] = useState("")
 
     const onChangeHandler = (e) => {
         const newValue = e.currentTarget.value
@@ -128,17 +128,20 @@ export function ComponentForProcessingNumericValues() {
     }
 
     return (
-        <div className="App">
-            <header className="App-header">
-                {error && <div>{error}</div>}
-                <input type="text" value={typeValue}
-                       onChange={onChangeHandler} className="inputType"
+        <header className="container">
+            <div className= 'error'>{error && <div>{error}</div>}</div>
+                <input  value={typeValue}
+                       onChange={onChangeHandler}
                        onKeyPress={onKeyPressHandler}
+                       className="inputType"
+                       placeholder= "Ведите цифру"
                 />
-                <button onClick={onClickHandler} className="buttonType">Enter</button>
-                {!error && <span className="resultType">{figureInWords}</span>}
-            </header>
-        </div>
+            <button onClick={onClickHandler} className="buttonType">Результат</button>
+            <div>
+                {!error && <span className="resultType">Результат: {figureInWords}</span>}
+            </div>
+        </header>
+
     )
 }
 
