@@ -10,12 +10,10 @@ export const splitArr = (val) => {
         const arrNum = num.toString().split("")
 
         if (arrNum.length > 3) {
-            debugger
             const arrStr = arrNum.splice(0 - 3).join("");
             arrRes.push(arrStr)
             split(arrNum.join(""))
         } else {
-            debugger
             if (arrNum.length > 0) arrRes.push(arrNum.join("").toString())
             return
         }
@@ -34,7 +32,7 @@ const bigNumbersNamesFormat = (num, i) => {
 
     const numStr = +num[num.length-1]
     const numStrDozens = +(((num.length>1)?num[num.length-2]:"") + num[num.length-1])
-    debugger
+
     num = Number(num)
     if (num !== 0) {
         if (numStr === 1 && numStrDozens!==11 && numStrDozens!==12) {
@@ -66,7 +64,6 @@ export const SimpleValue = (value, i) => {
 }
 //---------------------------------------------------------------------------------------------------------------
 export const translate = (num) => {
-    debugger
     const split = splitArr(num) /*["11" "111" "222"]*/
     const newArr = split.reverse().map((itemNum, i) => SimpleValue(itemNum, i) + " " + bigNumbersNamesFormat(itemNum, i)).reverse()
     return newArr.join(" ")
