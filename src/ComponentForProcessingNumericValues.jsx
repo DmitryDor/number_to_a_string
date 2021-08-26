@@ -49,7 +49,7 @@ export function ComponentForProcessingNumericValues() {
                    onChange={onChangeHandler}
                    onKeyPress={onKeyPressHandler}
                    className="inputType"
-                   placeholder="Ведите цифру"
+                   placeholder="Введите цифру"
             />
             <button onClick={onClickHandler} className="buttonType">Результат</button>
             <div>
